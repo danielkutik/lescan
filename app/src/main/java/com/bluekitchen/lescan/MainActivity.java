@@ -354,6 +354,7 @@ public class MainActivity extends Activity implements PacketHandler {
           testAddr = report.getAddress();
           addMessage(String.format("Adv: type %d, addr %s", testAddrType, testAddr));
           addMessage(String.format("Data: %s", Util.asHexdump(report.getData())));
+          addMessage("RSSI: " + report.getRssi());
         }
         break;
       case w4_connected:
