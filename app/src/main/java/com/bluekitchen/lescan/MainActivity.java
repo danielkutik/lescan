@@ -349,26 +349,11 @@ public class MainActivity extends Activity implements PacketHandler {
         break;
       case w4_scan_result:
         if (packet instanceof GAPLEAdvertisingReport) {
-
-          BD_ADDR sensor_tag_addr = new BD_ADDR("1C:BA:8C:20:C7:F6");
-          BD_ADDR pts_dongle = new BD_ADDR("00:1B:DC:07:32:EF");
-          BD_ADDR asus_dongle = new BD_ADDR("5c:f3:70:60:7b:87");
-
           GAPLEAdvertisingReport report = (GAPLEAdvertisingReport) packet;
-          BD_ADDR reportAddr = report.getAddress();
-          //if (reportAddr.toString().equalsIgnoreCase(asus_dongle.toString())) {
           testAddrType = report.getAddressType();
           testAddr = report.getAddress();
           addMessage(String.format("Adv: type %d, addr %s", testAddrType, testAddr));
           addMessage(String.format("Data: %s", Util.asHexdump(report.getData())));
-
-          //addMessage("GAPLEScanStop()");
-          //btstack.GAPLEScanStop();
-          //addMessage("GAPLEConnect(...)");
-          //state = STATE.w4_connected;
-
-          //btstack.GAPLEConnect(testAddrType, testAddr);
-          //}
         }
         break;
       case w4_connected:
